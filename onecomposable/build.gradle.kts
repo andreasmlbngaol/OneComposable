@@ -6,11 +6,10 @@ plugins {
 
 android {
     namespace = "com.mightysana.onecomposable"
-    compileSdk = 34
+    compileSdk = 35  // Updated compileSdk to 35
 
     defaultConfig {
         minSdk = 29
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -24,6 +23,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
@@ -34,7 +34,6 @@ android {
 }
 
 dependencies {
-
     val composeBom = platform("androidx.compose:compose-bom:2024.09.03")
     implementation(composeBom)
 
@@ -46,7 +45,6 @@ dependencies {
 
     implementation(libs.androidx.ui.tooling.preview)
     debugImplementation(libs.androidx.ui.tooling)
-
 }
 
 afterEvaluate {
@@ -57,6 +55,31 @@ afterEvaluate {
                 groupId = "com.github.andreasmlbngaol"
                 artifactId = "onecomposable"
                 version = "1.0"
+
+                // Artifact configurations to ensure all required files are published
+                artifact("$buildDir/outputs/aar/${artifactId}-release.aar")
+                pom {
+                    name.set("OneComposable")
+                    description.set("A library for reusable Composable functions")
+                    url.set("https://github.com/andreasmlbngaol/OneComposeLibrary")
+                    licenses {
+                        license {
+                            name.set("Apache License 2.0")
+                            url.set("http://www.apache.org/licenses/LICENSE-2.0")
+                        }
+                    }
+                    developers {
+                        developer {
+                            id.set("andreasmlbngaol")
+                            name.set("Andreas")
+                        }
+                    }
+                    scm {
+                        connection.set("scm:git:github.com/andreasmlbngaol/OneComposeLibrary.git")
+                        developerConnection.set("scm:git:ssh://github.com/andreasmlbngaol/OneComposeLibrary.git")
+                        url.set("https://github.com/andreasmlbngaol/OneComposeLibrary")
+                    }
+                }
             }
         }
     }
