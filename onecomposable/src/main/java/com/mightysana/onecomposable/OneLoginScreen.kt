@@ -7,9 +7,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 
 @Composable
-fun OneTsunamiIcon(
-    icon: Icon
-) {
+fun OneTsunamiIcon() {
     Icon(
         imageVector = Icons.Default.Tsunami,
         contentDescription = "Tsunami Icon"
