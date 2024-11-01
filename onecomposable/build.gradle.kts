@@ -25,21 +25,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
     kotlinOptions {
-        jvmTarget = "11"
-    }
-}
-
-publishing {
-    publications {
-        register<MavenPublication>("release") {
-            afterEvaluate {
-                from(components["release"])
-            }
-        }
+        jvmTarget = "21"
     }
 }
 
@@ -59,15 +49,15 @@ dependencies {
 
 }
 
-//publishing {
-//    publications {
-//        register<MavenPublication>("release") {
-//            afterEvaluate {
-//                from(components["release"])
-//                groupId = "com.github.andreasmlbngaol"
-//                artifactId = "onecomposable"
-//                version = "0.0.1"
-//            }
-//        }
-//    }
-//}
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "com.github.andreasmlbngaol"
+                artifactId = "onecomposable"
+                version = "1.0"
+            }
+        }
+    }
+}
