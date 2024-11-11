@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.mightysana.oneproject"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.mightysana.oneproject"
@@ -56,5 +56,6 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    // Random
+    implementation("com.mightysana:OneComposable:1.0.0")
+    // Test
 }

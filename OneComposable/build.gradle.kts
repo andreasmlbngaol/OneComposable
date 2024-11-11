@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.mightysana.onecomposable"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 29
@@ -30,6 +30,28 @@ android {
     }
     kotlinOptions {
         jvmTarget = "11"
+    }
+}
+
+androidComponents {
+    onVariants { variant ->
+        publishing {
+            publications {
+                // Hanya tambahkan varian yang valid
+                create<MavenPublication>(variant.name) {
+                    // Periksa apakah ada component sesuai dengan varian
+                    val component = components.findByName(variant.name) ?: components.findByName("release")
+
+                    if (component != null) {
+                        from(component)
+                    }
+
+                    groupId = "com.mightysana"
+                    artifactId = "OneComposable"
+                    version = "1.0.0"
+                }
+            }
+        }
     }
 }
 
