@@ -33,28 +33,19 @@ android {
     }
 }
 
-androidComponents {
-    onVariants { variant ->
-        publishing {
-            publications {
-                // Hanya tambahkan varian yang valid
-                create<MavenPublication>(variant.name) {
-                    // Periksa apakah ada component sesuai dengan varian
-                    val component = components.findByName(variant.name) ?: components.findByName("release")
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "com.github.andreasmlbngaol"
+            artifactId = "onecomposable"
+            version = "1.0"
 
-                    if (component != null) {
-                        from(component)
-                    }
-
-                    groupId = "com.mightysana"
-                    artifactId = "OneComposable"
-                    version = "1.0.0"
-                }
+            afterEvaluate {
+                from(components["release"])
             }
         }
     }
 }
-
 dependencies {
 
     implementation(libs.androidx.core.ktx)
