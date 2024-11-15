@@ -41,7 +41,7 @@ android {
 
 dependencies {
     // Other dependencies
-    implementation("com.github.andreasmlbngaol:OneComposable:$VERSION")
+    implementation("com.github.andreasmlbngaol:OneComposable:1.0.8")
 }
 ```
 
