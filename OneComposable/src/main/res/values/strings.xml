@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="no_internet">No Internet Connection…</string>
+    <string name="email_blank" translatable="false">Email is Blank</string>
+    <string name="email_invalid" translatable="false">Email Invalid</string>
+    <string name="password_blank" translatable="false">Password Blank</string>
+    <string name="password_invalid" translatable="false">Password Invalid</string>
+    <string name="password_length_invalid" translatable="false">Password Length Invalid</string>
+    <string name="password_number_invalid" translatable="false">Password must contain number</string>
+    <string name="password_uppercase_invalid" translatable="false">Password must contain uppercase</string>
+    <string name="password_lowercase_invalid" translatable="false">Password must contain lowercase</string>
+
 </resources>

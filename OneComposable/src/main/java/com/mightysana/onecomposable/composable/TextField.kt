@@ -1,21 +1,25 @@
 package com.mightysana.onecomposable.composable
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.text.selection.TextSelectionColors
 import androidx.compose.material3.LocalTextStyle
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
-import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldColors
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.VisualTransformation
+import com.mightysana.onecomposable.OneShape
+
+object OneTextFieldDefaults {
+    val shape
+        @Composable
+        get() = OneShape.large
+}
 
 @Composable
 fun OneTextField(
@@ -40,32 +44,11 @@ fun OneTextField(
     maxLines: Int = if (singleLine) 1 else Int. MAX_VALUE,
     minLines: Int = 1,
     interactionSource: MutableInteractionSource? = null,
-    shape: Shape = MaterialTheme.shapes.large,
-    colors: TextFieldColors = OutlinedTextFieldDefaults.colors().copy(
-        focusedIndicatorColor = MaterialTheme.colorScheme.primary,
-        unfocusedIndicatorColor = MaterialTheme.colorScheme.onSecondaryContainer,
-        focusedTextColor = MaterialTheme.colorScheme.secondary,
-        unfocusedTextColor = MaterialTheme.colorScheme.onSecondaryContainer,
-        errorTextColor = MaterialTheme.colorScheme.error,
-        errorContainerColor = MaterialTheme.colorScheme.errorContainer,
-        textSelectionColors = TextSelectionColors(
-            handleColor = MaterialTheme.colorScheme.tertiaryContainer,
-            backgroundColor = MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.4f)
-        ),
-        focusedLeadingIconColor = MaterialTheme.colorScheme.secondary,
-        unfocusedLeadingIconColor = MaterialTheme.colorScheme.onSecondaryContainer,
-        focusedTrailingIconColor = MaterialTheme.colorScheme.secondary,
-        unfocusedTrailingIconColor = MaterialTheme.colorScheme.onSecondaryContainer,
-        focusedLabelColor = MaterialTheme.colorScheme.secondary,
-        unfocusedLabelColor = MaterialTheme.colorScheme.onSecondaryContainer,
-        focusedPlaceholderColor = MaterialTheme.colorScheme.secondary,
-        unfocusedPlaceholderColor = MaterialTheme.colorScheme.onSecondaryContainer,
-        focusedPrefixColor = MaterialTheme.colorScheme.secondary,
-        unfocusedPrefixColor = MaterialTheme.colorScheme.onSecondaryContainer,
-        focusedSuffixColor = MaterialTheme.colorScheme.secondary,
-        unfocusedSuffixColor = MaterialTheme.colorScheme.onSecondaryContainer,
-
-        )
+    shape: Shape = OneTextFieldDefaults.shape,
+    colors: TextFieldColors = TextFieldDefaults.colors().copy(
+        unfocusedContainerColor = Color.Transparent,
+        focusedContainerColor = Color.Transparent
+    )
 ) {
     OutlinedTextField(
         value = value,
@@ -92,16 +75,4 @@ fun OneTextField(
         shape = shape,
         colors = colors
     )
-}
-
-@Composable
-fun ErrorSupportingText(
-    message: String?
-) {
-    AnimatedVisibility(message != null) {
-        Text(
-            text = message ?: "",
-            color = MaterialTheme.colorScheme.error
-        )
-    }
 }
