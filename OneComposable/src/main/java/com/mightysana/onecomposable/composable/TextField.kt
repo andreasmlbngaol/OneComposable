@@ -1,15 +1,16 @@
 package com.mightysana.onecomposable.composable
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldColors
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.VisualTransformation
@@ -45,10 +46,7 @@ fun OneTextField(
     minLines: Int = 1,
     interactionSource: MutableInteractionSource? = null,
     shape: Shape = OneTextFieldDefaults.shape,
-    colors: TextFieldColors = TextFieldDefaults.colors().copy(
-        unfocusedContainerColor = Color.Transparent,
-        focusedContainerColor = Color.Transparent
-    )
+    colors: TextFieldColors = OutlinedTextFieldDefaults.colors()
 ) {
     OutlinedTextField(
         value = value,
@@ -75,4 +73,14 @@ fun OneTextField(
         shape = shape,
         colors = colors
     )
+}
+
+@Composable
+fun ErrorSupportingText(
+    visible: Boolean,
+    message: String,
+) {
+    AnimatedVisibility(visible) {
+        Text(message)
+    }
 }

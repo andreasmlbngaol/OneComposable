@@ -326,7 +326,7 @@ fun ButtonPreview() {
             OneTextButton({}) { Text("OneTextButton") }
             SecondaryTextButton({}) { Text("SecondaryTextButton") }
             TertiaryTextButton({}) { Text("TertiaryTextButton") }
-            OneImageButton({}, painterResource(R.drawable.loader_image))
+            OneImageButton({}, painterResource(R.drawable.ic_launcher_foreground))
         }
     }
 }

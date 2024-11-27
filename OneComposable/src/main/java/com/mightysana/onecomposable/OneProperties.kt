@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 
+@Suppress("unused")
 object OneColor {
     val primary
         @Composable
@@ -51,6 +52,7 @@ object OneColor {
         get() = MaterialTheme.colorScheme.errorContainer
 }
 
+@Suppress("unused")
 object OneShape {
     val extraSmall
         @Composable
@@ -73,15 +75,27 @@ object OneShape {
         get() = MaterialTheme.shapes.extraLarge
 }
 
+@Suppress("unused")
 object OneValue {
     const val ALPHA = 0.4f
-    val padding = 16.dp
-    val smallPadding = 8.dp
-    val notRounded = 0.dp
+    val FormMaxWidth = 350.dp
+    val Padding = 16.dp
+    val SmallPadding = 8.dp
+    val ExtraSmallPadding = 4.dp
+    val NotRounded = 0.dp
+    const val USERS_COLLECTION = "users"
+    const val FRIEND_REQUESTS_COLLECTION = "friendRequests"
+    const val FRIENDS_COLLECTION = "friends"
+    const val FRIEND_LIST = "FriendList"
+    const val PROFILE = "Profile"
+    const val SETTINGS = "Settings"
+    const val SEARCH = "Search"
+    const val NOTIFICATIONS = "Notifications"
 }
 
 object OneImage {
     val LauncherIcon
         @Composable
-        get() = painterResource(R.drawable.loader_image)
+        get() = painterResource(R.drawable.ic_launcher_foreground)
 }
+

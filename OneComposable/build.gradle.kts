@@ -12,7 +12,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        minSdk = 29
+        minSdk = 31
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -36,6 +36,7 @@ android {
     }
     buildFeatures {
         compose = true
+        viewBinding = true
     }
 }
 
@@ -52,6 +53,7 @@ publishing {
         }
     }
 }
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -63,6 +65,9 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
+    implementation(libs.firebase.database.ktx)
+    implementation(libs.androidx.ui.text.google.fonts)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -73,11 +78,19 @@ dependencies {
     implementation(libs.material3)
     implementation(libs.androidx.material.icons.core)
     implementation(libs.androidx.material.icons.extended)
-
     implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
-    implementation(libs.androidx.hilt.navigation.compose)
+    kapt(libs.hilt.compiler)
+    implementation(libs.hilt.navigation.compose)
     implementation(libs.google.googleid)
+    implementation(libs.firebase.database)
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
+
+    implementation(libs.cloudinary.android)
+    implementation(libs.glide)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.ui)
 }
 
 kapt {
